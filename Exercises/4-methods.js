@@ -1,6 +1,4 @@
 'use strict';
-
-const methods = iface => {
   // Introspect all properties of iface object and
   // extract function names and number of arguments
   // For example: {
@@ -16,6 +14,15 @@ const methods = iface => {
   //   ['m2', 2],
   //   ['m3', 3]
   // ]
+const methods = iface => {
+  const myArray = [];
+  for (const id in iface) {
+    const func = iface[id];
+    if (typeof func === 'function') {
+      myArray.push([id, func.length]);
+    }
+  }
+  return myArray;
 };
 
 module.exports = { methods };
